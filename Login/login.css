@@ -1,0 +1,134 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+html {
+  font-size: 13px;
+  height: 100%;
+}
+body {
+  height: 98.9%;
+  width: 99.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-image: url("SUNSET.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.container,
+div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 25rem;
+  width: 20rem;
+  background-color: transparent;
+  /* background-color: #f0f0f0; */
+}
+.container {
+  border-radius: 2rem;
+  padding: 5rem 1.5rem;
+  backdrop-filter: blur(2.5px);
+  border: 0.1rem solid white;
+  box-shadow: 0 0px 25px rgba(227, 228, 237, 0.37);
+}
+.set {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5rem 0rem 0rem 0rem;
+}
+.username,
+.password,
+.move {
+  width: 100%;
+  height: fit-content;
+}
+.move {
+  flex-direction: column;
+  text-align: center;
+  margin: 0rem 0rem 5rem 0rem;
+}
+.username,
+.password {
+  margin: 1rem 0rem;
+}
+#username,
+#password {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 1rem;
+  background-color: rgba(245, 245, 245, 0.519);
+  backdrop-filter: blur(5px);
+  box-shadow: 2px 2px 10px rgba(72, 139, 227, 0.579),
+    -2px -2px 10px rgba(72, 139, 227, 0.579);
+  padding: 0rem 1.5rem;
+  border: 3px solid black;
+  outline: none;
+}
+label {
+  position: relative;
+  display: inline;
+  left: -80px;
+  top: -50px;
+  background: transparent;
+  padding: 0 4px;
+  color: #666;
+  transition: 0.3s;
+  pointer-events: none;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+.password>label{
+  left: -7rem;
+  top: -2rem;
+}
+.username>label{
+  left: -6rem;
+  top: -2rem;
+}
+#show {
+  position: relative;
+  top: -2.4rem;
+  right: -11rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+#show img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#show,
+button[type="submit"]:hover {
+  cursor: pointer;
+}
+button[type="submit"] {
+  font-size: 2rem;
+  width: 60%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  background-color: rgba(0, 183, 255, 0.784);
+  border: 2px solid black;
+}
+a {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+/* Animations */
+button[type="submit"]:hover {
+  transition: transform 0.6s ease;
+  transform: scale(1.25);
+  color: White;
+}
+

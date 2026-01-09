@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Attendance.css" />
+  </head>
+  <body>
+    <div class="nevigation">
+      <img src="" alt="">
+      <ul>
+        <li><a href="">Logout</a></li>
+        <li><a href="">About Page</a></li>
+      </ul>
+    </div>
+    <form action="/attendance" method="get">
+      <div class="container">
+        <div class="data">
+          <h1>Attendance</h1>
+          <input type="text" placeholder="Student name" />
+          <button type="button" class="search" ><img src="search.png" alt="" /></button>
+        </div>
+        <div class="attendancedetail"></div>
+      </div>
+      <div class="final">
+        <div class="summarry">
+          <p >Attendance Summary</p>
+          <p>Total Present: <span id="presentstatus">0</span></p>
+          <p>Total Absent: <span id="absentstatus">0</span></p>
+        </div>
+        <div class="change">
+          <button type="button" class="Reset">Reset</button>
+          <button type="button" class="submit">Save</button>
+          <button type="submit" >Submit</button>
+        </div>
+      </div>
+    </form>
+    <script src="Attendance.js"></script>
+  </body>
+</html>

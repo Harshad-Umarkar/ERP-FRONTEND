@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calander{
+            display: flex;
+            flex-direction: column;
+            /* display: none; */
+            width: 70%;
+            text-align: center;
+            height: 25rem;
+            position: absolute;
+            top: auto;
+            left: auto;
+        }
+        .sub select{
+            border: none;
+        }
+        .week{
+            display: flex;
+            flex-direction: row;
+        }
+        .week div{
+            width: 14.2%;
+            height: 1rem;
+            font-size: 0.5rem;
+        }
+        .day{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            height: 100%;
+            /* align-content: center; */
+            text-align: center;
+            /* align-items: center; */
+            /* height: ; */
+        }
+        .Sun{
+            background-color: red;
+            color: white;
+        }
+        .date{
+            height: 2rem;
+        }
+        .status{
+            /* align-items: end; */
+            text-align: end ;
+        }
+    </style>
+</head>
+<body>
+    <div class="calander">
+        <div class="status"><button class="close">x</button></div>
+        <div class="sub">
+            <select name="" id="">
+                <option value="">IOT</option>
+                <option value="">CAO</option>
+                <option value="">DBMS</option>
+                <option value="">DM</option>
+                <option value="">CD</option>
+            </select>
+        </div>
+        <div class="name">January-2025</div>
+        <div class="week">
+            <div class="Sun">Sun</div>
+            <div class="Mon">Mon</div>
+            <div class="Tue">Tue</div>
+            <div class="Wed">Wed</div>
+            <div class="Thu">Thu</div>
+            <div class="Fri">Fri</div>
+            <div class="Sat">Sat</div>
+        </div>
+        <div class="day">
+            <div class="1" id="date">1</div>
+            <div class="2" id="date">2</div>
+            <div class="3" id="date">3</div>
+            <div class="4" id="date">4</div>
+            <div class="5" id="date">5</div>
+            <div class="6" id="date">6</div>
+            <div class="7" id="date">7</div>
+            <div class="8" id="date">8</div>
+            <div class="9" id="date">9</div>
+            <div class="10" id="date">10</div>
+            <div class="11" id="date">11</div>
+            <div class="12" id="date">12</div>
+            <div class="13" id="date">13</div>
+            <div class="14" id="date">14</div>
+            <div class="15" id="date">15</div>
+            <div class="16" id="date">16</div>
+            <div class="17" id="date">17</div>
+            <div class="18" id="date">18</div>
+            <div class="19" id="date">19</div>
+            <div class="20" id="date">20</div>
+            <div class="21" id="date">21</div>
+            <div class="22" id="date">22</div>
+            <div class="23" id="date">23</div>
+            <div class="24" id="date">24</div>
+            <div class="25" id="date">25</div>
+            <div class="26" id="date">26</div>
+            <div class="27" id="date">27</div>
+            <div class="28" id="date">28</div>
+            <div class="29" id="date">29</div>
+            <div class="30" id="date">30</div>
+        </div>
+    </div>
+  <script>
+    // set year and monthIndex (0=Jan)
+    const year = 2025;
+    const monthIndex = 0; // January
+    // compute weekday of 1st (0=Sun .. 6=Sat)
+    const firstWeekday = new Date(2025, 0, 1).getDay();
+    // find the first numeric day element and shift it
+    const dayContainer = document.querySelector('.day');
+    const firstDayElem = dayContainer.querySelector('div'); // first child
+    firstDayElem.style.gridColumnStart = firstWeekday + 1;
+    const firstWeekday1 = new Date(2025, 1, 0).getDate();
+    console.log(firstWeekday1)
+    const btn=document.querySelector('.close')
+    const calander=document.querySelector('.calander')
+    btn.addEventListener('click',()=>{
+        // console.log('hello')
+        calander.setAttribute('style','display:none')
+    })
+  </script>
+</body>
+</html>
+</body>
+</html>

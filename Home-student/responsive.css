@@ -1,0 +1,36 @@
+@media (min-width: 1000px) {
+  .container {
+    width: 10rem;
+  }
+  .content {
+    display: flex;
+  }
+  .sheet {
+    transform: rotate(0deg);
+  }
+  .close-shedule {
+    right: -48%;
+    top: -1.5rem;
+    transform: rotate(0deg); /* rotate the sheet */
+  }
+  .calender {
+    max-height: fit-content;
+  }
+  .carousel-viewport {
+    height: fit-content;
+  }
+  .profile{
+    height: 35rem;
+    width: fit-content;
+  margin: 0;
+  }
+ .profile-content{
+  height: 100%;
+    transform: rotate(0deg);
+  }
+  .colse-profile{
+  top: -100%;
+  right: -50%;
+  transform: rotate(0deg);
+}
+}

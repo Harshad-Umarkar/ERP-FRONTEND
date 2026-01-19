@@ -3,5 +3,5 @@ git init
 git add .
 git commit -m "Initial frontend commit"
 git branch -M main
-git remote add origin https://github.com/H4R5H40/ERP.git
+git remote add origin https://github.com/harshad-umarkar/ERP.git
 git push -u origin main

@@ -21,20 +21,17 @@ document.querySelector('#check').addEventListener('click',()=>{
     let email=id.value
     let password=pass.value
     console.log(email,password)
-    fetch('http://127.0.0.1:8000/login/',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({id: id.value, password: pass.value})
-    })  
-    .then(response => response.json())
-    .then(data => {
-        if(data.length>0){
-            alert('Login Successful')}
-            else{
-                alert('Login Failed')
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    fetch("https://harshgumarkar.pythonanywhere.com/")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Fetched data:", data);
+  })
+  .catch(error => {
+    console.error("Error fetching data:", error);
+  });
 })

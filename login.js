@@ -21,6 +21,7 @@ document.querySelector('#check').addEventListener('click',()=>{
     let email=id.value
     let password=pass.value
     console.log(email,password)
+<<<<<<< HEAD
     fetch("https://harshgumarkar.pythonanywhere.com/")
   .then(response => {
     if (!response.ok) {
@@ -34,4 +35,22 @@ document.querySelector('#check').addEventListener('click',()=>{
   .catch(error => {
     console.error("Error fetching data:", error);
   });
+=======
+    fetch('http://127.0.0.1:8000/login/',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({id: id.value, password: pass.value})
+    })  
+    .then(response => response.json())
+    .then(data => {
+        if(data.length>0){
+            alert('Login Successful')}
+            else{
+                alert('Login Failed')
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+>>>>>>> b613ca0d6913f08d8e8c5fcfa7c413b6fff61b4b
 })

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .detail {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow: auto;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .profile {
+        height: 10rem;
+        padding: 1rem;
+      }
+      .profile-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .profile {
+        display: grid;
+        grid-template-columns: 0.7fr 3fr;
+        padding: 2rem;
+      }
+      .photo img {
+        width: 10rem;
+      }
+      .photo-nev {
+        display: grid;
+        grid-template-rows: 0.5fr 1fr;
+        row-gap: 2rem;
+      }
+      .detail > div {
+        border-radius: 1rem;
+        background-color: azure;
+        border: 0.1rem solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 40px rgba(20, 30, 60, 0.12);
+        padding: 1rem;
+      }
+      .photo-nev > div {
+        border-radius: 1rem;
+        background-color: azure;
+        border: 0.1rem solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 40px rgba(20, 30, 60, 0.12);
+        padding: 1rem;
+      }
+      .profile > div {
+        margin: 1rem;
+      }
+      .photo {
+        align-items: center;
+        width: fit-content;
+        height: fit-content;
+        /* justify-items: center; */
+      }
+      .nev {
+        padding: 1rem;
+        text-align: center;
+        height: fit-content;
+      }
+      .nev li {
+        text-decoration: none;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile">
+      <div class="photo-nev">
+        <div class="photo"><img src="unavailable-profile.png" alt="" /></div>
+        <div class="nev">
+          <li><a href="">Profile</a></li>
+          <li><a href="">Attendance</a></li>
+          <li><a href="#Assignment">Assignment</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Update Profile</a></li>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="profile-detail">
+          <h2>Harshad Ganesh Umarkar</h2>
+          <h3>Class:- <span>3rd year</span></h3>
+          <h3>Semester:- <span>5th sem</span></h3>
+          <h3>Department:- <span>Computer Science and Engineering</span></h3>
+          <h3>Collage:- Dr. Padm. V.B.Kolte Collage of Engineering Malkapur</h3>
+          <h3>Overall Attendance:- <span>80%</span></h3>
+        </div>
+        <div class="Attendance">
+          <h1>Attendance:-</h1>
+          <div class="Summarry">
+            <table>
+              <tr>
+                <th>Subject</th>
+                <th>Attendance Persentage</th>
+                <th>Total Lecture</th>
+                <th>Attend Lecture</th>
+              </tr>
+              <tr>
+                <td>IOT</td>
+                <td>80%</td>
+                <td>100</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>DBMS</td>
+                <td>80%</td>
+                <td>100</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>CD</td>
+                <td>80%</td>
+                <td>100</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>CM</td>
+                <td>80%</td>
+                <td>100</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>CAO</td>
+                <td>80%</td>
+                <td>100</td>
+                <td>80</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="Assignment" id="Assignment">
+          <div class="Assignmet-given">
+            <details>
+              <summary>Assignment-to-do</summary>
+              <select name="Subject" id="">
+                <option value="IOT">IOT</option>
+                <option value="CAO">CAO</option>
+                <option value="DBMS">DBMS</option>
+                <option value="DM">DM</option>
+                <option value="CD">CD</option>
+              </select>
+              <li>
+                <h3>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+                  nulla iure modi doloremque amet blanditiis libero eos facere
+                  assumenda sed? Nobis magnam totam cupiditate atque beatae
+                  similique, rerum dolore nam!
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Libero officiis incidunt nemo, recusandae rem saepe voluptatum
+                  dolore itaque quam atque praesentium distinctio enim culpa
+                  optio id dicta animi ad nisi ipsa. Doloremque tempora ut
+                  delectus corrupti? Eligendi, necessitatibus.
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Sint cum ut ipsa asperiores assumenda maxime itaque eius
+                  beatae totam voluptatem. Beatae magni fugit modi, porro veniam
+                  voluptatem debitis fuga delectus? Neque, corrupti nulla.
+                  Corrupti, tenetur consequuntur. Omnis, quisquam.
+                </h3>
+              </li>
+              <br />
+              <button>check</button>
+            </details>
+          </div>
+          <div class="Assignment-submited">
+            <details>
+              <summary>Assignment-done</summary>
+              <select name="Subject" id="">
+                <option value="IOT">IOT</option>
+                <option value="CAO">CAO</option>
+                <option value="DBMS">DBMS</option>
+                <option value="DM">DM</option>
+                <option value="CD">CD</option>
+              </select>
+              <li>
+                <h3>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                  minus nulla iure, corrupti asperiores maiores explicabo quasi
+                  molestiae similique optio error obcaecati! Totam, deserunt.
+                  Enim laudantium odit quis beatae amet!
+                  <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, dolores.</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Odit deleniti ea enim voluptas corrupti aperiam labore
+                  distinctio laborum corporis. Rem iste dolor eaque cum
+                  laudantium voluptatum tenetur, iure qui expedita, maiores
+                  fugit velit, illum aut animi eum inventore?
+                  <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, dolores.</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Quos ut vero itaque hic modi aut officiis? Magni, nam?
+                  Deserunt, vel voluptatem aspernatur maiores corrupti alias
+                  facilis tempore unde, cupiditate quod necessitatibus omnis
+                  magnam nobis asperiores aliquid. Labore, modi?
+                  <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, dolores.</a>
+                </h3>
+              </li>
+            </details>
+          </div>
+        </div>
+        <div class="contact">
+          <li><h3>What's App No:- <span><a href="">9822301670</a></span></h3></li>
+          <li><h3>Phone No:- <span><a href="">9822301670</a></span></h3></li>
+          <li><h3>Gmail:- <span><a href="">umarkarganesh7@gmail.com</a></span></h3></li>
+        </div>
+        <div class="Update-Profile"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <!-- <link rel="stylesheet" href="clouser.css"> -->
+  </head>
+  <body>
+    <!-- nevigation bar start here  -->
+    <header class="container1" id="home">
+      <div class="header-title container1">
+        <h1 class="headeri-name">Portfolio</h1>
+        <button class="view-mode">
+          <img src="dark-mode.png" alt="" class="mode" id="mode" />
+        </button>
+      </div>
+      <div class="Nevigation-panal container1">
+        <div>
+          <button class="hamburger">☰</button>
+        </div>
+        <li class="Nevigation-action-title">
+          <a href="#home" class="Nevigation-action">Home</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#About-Section" class="Nevigation-action">About</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#Skill-Section" class="Nevigation-action">Skills</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#Project-Section" class="Nevigation-action">Project</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#Experience-Section" class="Nevigation-action">Experience</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#Education-Section" class="Nevigation-action">Education</a>
+        </li>
+        <li class="Nevigation-action-title">
+          <a href="#Contact-Section" class="Nevigation-action">Contact</a>
+        </li>
+      </div>
+    </header>
+    <!-- nevigation bar end here -->
+    <div class="main-container">
+      <div class="info">
+        <h1>Welcome, Harshad</h1>
+        <h2>Student</h2>
+        <br />
+        <p>PADMSHREE DR. V. B. KOLTE COLLAGE OF ENGINEERING, MALKAPUR</p>
+        <br />
+        <h3><span class="date"></span><span class="time"></span></h3>
+      </div>
+      <div class="content">
+        <div class="container" id="profile">
+          <img src="profile.png" alt="" />
+          <p>Profile</p>
+        </div>
+        <div class="container" id="assignment">
+          <img src="assignment.png" alt="" />
+          <p>Assignment</p>
+        </div>
+        <div class="container" id="notes">
+          <img src="notes.png" alt="" />
+          <p>Notes</p>
+        </div>
+        <div class="container" id="progress">
+          <img src="progress.png" alt="" />
+          <p>Progress</p>
+        </div>
+        <div class="container" id="schedule">
+          <img src="schedule.png" alt="" />
+          <p></p>
+          Schedule
+        </div>
+        <div class="container" id="calender">
+          <img src="Attendance-overview.png" alt="" />
+          <p></p>
+          Attendance<br />Overview
+        </div>
+        <div class="container" id="notice">
+          <img src="notice.png" alt="" />
+          <p>Notice</p>
+        </div>
+        <div class="container" id="application">
+          <img src="application.png" alt="" />
+          <p>Application</p>
+        </div>
+      </div>
+    </div>
+    <div class="calender">
+      <button class="close-calender">X</button>
+      <div class="sub">
+        <select name="" id="">
+          <option value="">IOT</option>
+          <option value="">CAO</option>
+          <option value="">DBMS</option>
+          <option value="">DM</option>
+          <option value="">CD</option>
+        </select>
+      </div>
+      <div class="name"></div>
+      <div class="week">
+        <div class="Sun">Sun</div>
+        <div class="Mon">Mon</div>
+        <div class="Tue">Tue</div>
+        <div class="Wed">Wed</div>
+        <div class="Thu">Thu</div>
+        <div class="Fri">Fri</div>
+        <div class="Sat">Sat</div>
+      </div>
+      <div class="carousel" aria-roledescription="carousel">
+        <div class="carousel-viewport" id="carouselViewport">
+          <div class="slides" id="slides"></div>
+          <button class="control prev" id="prevBtn" aria-label="Previous slide">
+            &#9664;
+          </button>
+          <button class="control next" id="nextBtn" aria-label="Next slide">
+            &#9654;
+          </button>
+          <div class="indicators" id="indicators" aria-hidden="false"></div>
+        </div>
+      </div>
+    </div>
+    <div class="Assignment">
+      <button class="close-Assignment">X</button>
+      <details>
+        <summary>Assignment-to-do</summary>
+        <select name="Subject" id="">
+          <option value="IOT">IOT</option>
+          <option value="CAO">CAO</option>
+          <option value="DBMS">DBMS</option>
+          <option value="DM">DM</option>
+          <option value="CD">CD</option>
+        </select>
+        <br />
+        <button class="see-Assignment">check</button>
+        <div class="check"></div>
+      </details>
+      <details>
+        <summary>Upload-Assignment</summary>
+        <input type="file" />
+        <input type="text" placeholder="Assignment-Name" />
+        <br />
+        <input type="text" placeholder="Subject" />
+        <br />
+        <button>Upload</button>
+      </details>
+    </div>
+    <div class="Notes">
+      <button class="close-Notes">X</button>
+      <select name="Subject" id="">
+        <option value="IOT">IOT</option>
+        <option value="CAO">CAO</option>
+        <option value="DBMS">DBMS</option>
+        <option value="DM">DM</option>
+        <option value="CD">CD</option>
+      </select>
+      <button class="see-Notes">check</button>
+      <div class="check"></div>
+    </div>
+    <div class="shedule">
+      <button class="close-shedule">X</button>
+      <div class="sheet">
+        <h1>Weekly Timetable</h1>
+        <table class="timetable" role="table" aria-label="Weekly timetable">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>9:15–10:15</th>
+              <th>10:15–11:15</th>
+              <th>11:15–12:15</th>
+              <th>12:15–13:15</th>
+              <th>13:15–13:45</th>
+              <th>13:45–14:45</th>
+              <th>14:45–15:45</th>
+            </tr>
+          </thead>
+          <tbody id="temp"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="Application">
+      <button class="colse-application">X</button>
+      <div class="name">
+        <div class="Applicant">
+          <label>Applicant Name - Roll No</label>
+          <div class="studenDetail">
+            <div class="student">
+              <input type="text" />
+              <select class="rollno"></select>
+            </div>
+          </div>
+        </div>
+        <button class="add">Add Member</button>
+      </div>
+      <div class="Reason">
+        <label> Reason</label>
+        <input list="reason" name="reason" />
+        <datalist id="reason">
+          <option value="Leave"></option>
+          <option value="Acadmics"></option>
+          <option value="Complainet"></option>
+        </datalist>
+      </div>
+      <div class="Details"><textarea rows="10"></textarea></div>
+      <button class="Submit">Submit</button>
+    </div>
+    <div class="profile">
+      <div class="profile-content">
+        <div class="photo-nev">
+          <div class="photo">
+            <img src="unavailable-profile.png" alt="Profile photo" />
+          </div>
+          <nav class="nev">
+            <ul>
+              <li><a href="#profile-detail">Profile</a></li>
+              <li><a href="#attendance">Attendance</a></li>
+              <li><a href="#assignment">Assignment</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#update-profile">Update Profile</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="detail">
+          <div id="profile-detail" class="profile-detail">
+            <h2>Harshad Ganesh Umarkar</h2>
+            <h3>Class:- <span>3rd year</span></h3>
+            <h3>Semester:- <span>5th sem</span></h3>
+            <h3>Department:- <span>Computer Science and Engineering</span></h3>
+            <h3>
+              Collage:- Dr. Padm. V.B.Kolte Collage of Engineering Malkapur
+            </h3>
+            <h3>Overall Attendance:- <span>80%</span></h3>
+          </div>
+          <div id="attendance" class="Attendance">
+            <h1>Attendance:-</h1>
+            <div class="Summarry">
+              <table>
+                <tr>
+                  <th>Subject</th>
+                  <th>Attendance Persentage</th>
+                  <th>Total Lecture</th>
+                  <th>Attend Lecture</th>
+                </tr>
+                <tr>
+                  <td>IOT</td>
+                  <td>80%</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>DBMS</td>
+                  <td>80%</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>CD</td>
+                  <td>80%</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>CM</td>
+                  <td>80%</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <td>CAO</td>
+                  <td>80%</td>
+                  <td>100</td>
+                  <td>80</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="assignment" id="assignment">
+            <div class="assignmet-given">
+              <details>
+                <summary>Assignment-to-do</summary>
+                <select name="Subject" id="">
+                  <option value="IOT">IOT</option>
+                  <option value="CAO">CAO</option>
+                  <option value="DBMS">DBMS</option>
+                  <option value="DM">DM</option>
+                  <option value="CD">CD</option>
+                </select>
+                <li>
+                  <h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Unde nulla iure modi doloremque amet blanditiis libero eos
+                    facere assumenda sed? Nobis magnam totam cupiditate atque
+                    beatae similique, rerum dolore nam!
+                  </h3>
+                </li>
+                <li>
+                  <h3>
+                    Libero officiis incidunt nemo, recusandae rem saepe
+                    voluptatum dolore itaque quam atque praesentium distinctio
+                    enim culpa optio id dicta animi ad nisi ipsa. Doloremque
+                    tempora ut delectus corrupti? Eligendi, necessitatibus.
+                  </h3>
+                </li>
+                <li>
+                  <h3>
+                    Sint cum ut ipsa asperiores assumenda maxime itaque eius
+                    beatae totam voluptatem. Beatae magni fugit modi, porro
+                    veniam voluptatem debitis fuga delectus? Neque, corrupti
+                    nulla. Corrupti, tenetur consequuntur. Omnis, quisquam.
+                  </h3>
+                </li>
+                <br />
+                <button>check</button>
+              </details>
+            </div>
+            <div class="Assignment-submited">
+              <details>
+                <summary>Assignment-done</summary>
+                <select name="Subject" id="">
+                  <option value="IOT">IOT</option>
+                  <option value="CAO">CAO</option>
+                  <option value="DBMS">DBMS</option>
+                  <option value="DM">DM</option>
+                  <option value="CD">CD</option>
+                </select>
+                <li>
+                  <h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Harum minus nulla iure, corrupti asperiores maiores
+                    explicabo quasi molestiae similique optio error obcaecati!
+                    Totam, deserunt. Enim laudantium odit quis beatae amet!
+                    <a href=""
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Consectetur, dolores.</a
+                    >
+                  </h3>
+                </li>
+                <li>
+                  <h3>
+                    Odit deleniti ea enim voluptas corrupti aperiam labore
+                    distinctio laborum corporis. Rem iste dolor eaque cum
+                    laudantium voluptatum tenetur, iure qui expedita, maiores
+                    fugit velit, illum aut animi eum inventore?
+                    <a href=""
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Consectetur, dolores.</a
+                    >
+                  </h3>
+                </li>
+                <li>
+                  <h3>
+                    Quos ut vero itaque hic modi aut officiis? Magni, nam?
+                    Deserunt, vel voluptatem aspernatur maiores corrupti alias
+                    facilis tempore unde, cupiditate quod necessitatibus omnis
+                    magnam nobis asperiores aliquid. Labore, modi?
+                    <a href=""
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Consectetur, dolores.</a
+                    >
+                  </h3>
+                </li>
+              </details>
+            </div>
+          </div>
+          <div id="contact" class="contact">
+            <ul>
+              <li>
+                <h3>
+                  What's App No:-
+                  <span><a href="tel:9822301670">9822301670</a></span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Phone No:-
+                  <span><a href="tel:9822301670">9822301670</a></span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  Gmail:-
+                  <span
+                    ><a href="mailto:umarkarganesh7@gmail.com"
+                      >umarkarganesh7@gmail.com</a
+                    ></span
+                  >
+                </h3>
+              </li>
+            </ul>
+          </div>
+          <div id="update-profile" class="Update-Profile"></div>
+        </div>
+      </div>
+      <button class="colse-profile">X</button>
+    </div>
+    <div class="progress">
+      <button class="close-progress">X</button>
+      <div class="header">
+        <h1>Student Progress Report</h1>
+        <p>Track your academic performance across subjects</p>
+      </div>
+
+      <select class="subject-selector" id="subjectSelector">
+        <option value="all">All Subjects</option>
+        <option value="IOT">IOT</option>
+        <option value="CAO">CAO</option>
+        <option value="DBMS">DBMS</option>
+        <option value="DM">DM</option>
+        <option value="CD">CD</option>
+      </select>
+      <div class="progress-cards" id="progressCards"></div>
+
+      <div class="chart-container">
+        <div class="chart-card">
+          <h2>Monthly Performance</h2>
+          <canvas id="monthlyChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h2>Subject-wise Comparison</h2>
+          <canvas id="subjectChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="notice"></div>
+    <script src="home.js"></script>
+    <script src="calender.js"></script>
+    <script src="intro.js"></script>
+  </body>
+</html>

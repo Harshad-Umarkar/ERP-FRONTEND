@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Progress</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: azure;
+            padding: 2rem;
+        }
+
+        .progress {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #444;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .progress-bar {
+            background: #eee;
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #47adad;
+            transition: width 0.5s ease;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .subject-selector {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .progress-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress">
+        <div class="header">
+            <h1>Student Progress Report</h1>
+            <p>Track your academic performance across subjects</p>
+        </div>
+
+        <select class="subject-selector" id="subjectSelector">
+            <option value="all">All Subjects</option>
+            <option value="IOT">IOT</option>
+            <option value="CAO">CAO</option>
+            <option value="DBMS">DBMS</option>
+            <option value="DM">DM</option>
+            <option value="CD">CD</option>
+        </select>
+
+        <div class="progress-cards" id="progressCards">
+            <!-- Cards will be populated by JavaScript -->
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-card">
+                <h2>Monthly Performance</h2>
+                <canvas id="monthlyChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Subject-wise Comparison</h2>
+                <canvas id="subjectChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data structure
+        const studentData = {
+            subjects: {
+                IOT: {
+                    attendance: 85,
+                    assignments: 90,
+                    practicals: 88,
+                    theory: 78,
+                    monthlyScores: [75, 82, 88, 85, 90, 87, 92, 89]
+                },
+                CAO: {
+                    attendance: 92,
+                    assignments: 85,
+                    practicals: 90,
+                    theory: 82,
+                    monthlyScores: [80, 85, 82, 88, 85, 90, 88, 92]
+                },
+                DBMS: {
+                    attendance: 88,
+                    assignments: 92,
+                    practicals: 95,
+                    theory: 85,
+                    monthlyScores: [78, 85, 90, 92, 88, 85, 90, 93]
+                },
+                DM: {
+                    attendance: 90,
+                    assignments: 88,
+                    practicals: 92,
+                    theory: 80,
+                    monthlyScores: [82, 88, 85, 90, 92, 88, 85, 90]
+                },
+                CD: {
+                    attendance: 86,
+                    assignments: 90,
+                    practicals: 85,
+                    theory: 88,
+                    monthlyScores: [85, 88, 90, 87, 85, 92, 88, 91]
+                }
+            }
+        };
+
+        // Create progress cards
+        function createProgressCards(subject = 'all') {
+            const container = document.getElementById('progressCards');
+            container.innerHTML = '';
+
+            const subjects = subject === 'all' ? Object.keys(studentData.subjects) : [subject];
+
+            subjects.forEach(subj => {
+                const data = studentData.subjects[subj];
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h2>${subj}</h2>
+                    <div>
+                        <p>Attendance</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${data.attendance}%"></div>
+                        </div>
+                        <p>Assignments</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${data.assignments}%"></div>
+                        </div>
+                        <p>Practicals</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${data.practicals}%"></div>
+                        </div>
+                        <p>Theory</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${data.theory}%"></div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Create monthly performance chart
+        function createMonthlyChart(subject = 'all') {
+            const ctx = document.getElementById('monthlyChart').getContext('2d');
+            const months = ['April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'];
+            
+            const datasets = [];
+            if (subject === 'all') {
+                Object.entries(studentData.subjects).forEach(([subj, data]) => {
+                    datasets.push({
+                        label: subj,
+                        data: data.monthlyScores,
+                        borderColor: getRandomColor(),
+                        fill: false
+                    });
+                });
+            } else {
+                datasets.push({
+                    label: subject,
+                    data: studentData.subjects[subject].monthlyScores,
+                    borderColor: '#47adad',
+                    fill: false
+                });
+            }
+
+            if (window.monthlyChart) {
+                window.monthlyChart.destroy();
+            }
+
+            window.monthlyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        // Create subject comparison chart
+        function createSubjectChart(subject = 'all') {
+            const ctx = document.getElementById('subjectChart').getContext('2d');
+            const subjects = subject === 'all' ? Object.keys(studentData.subjects) : [subject];
+            const data = subjects.map(subj => {
+                const scores = studentData.subjects[subj];
+                return (scores.attendance + scores.assignments + scores.practicals + scores.theory) / 4;
+            });
+
+            if (window.subjectChart) {
+                window.subjectChart.destroy();
+            }
+
+            window.subjectChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: subjects,
+                    datasets: [{
+                        label: 'Overall Performance',
+                        data: data,
+                        backgroundColor: '#47adad',
+                        borderColor: '#47adad',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        // Utility function to generate random colors
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createProgressCards();
+            createMonthlyChart();
+            createSubjectChart();
+
+            // Add event listener for subject selection
+            document.getElementById('subjectSelector').addEventListener('change', (e) => {
+                const subject = e.target.value;
+                createProgressCards(subject);
+                createMonthlyChart(subject);
+                createSubjectChart(subject);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .Application {
+        display: flex;
+        flex-direction: column;
+        /* gap: 1rem;       */
+        justify-content: center;
+        width: 100%;
+        border: 1px solid red;
+        border-radius: 1rem;
+        align-items: center;
+        padding: 1rem;
+      }
+      .name,
+      .Reason,
+      .Details {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        align-items: center;
+        border-radius: 1rem;
+        padding: 1rem;
+        gap: 1rem;
+        margin: 1rem;
+        border: 0.1rem solid rgb(0, 0, 0);
+        box-shadow: 0 0px 15px rgba(0, 0, 0, 0.58);
+        background-color: azure;
+      }
+      .add ,.Submit{
+        width: 10rem;
+        height: 2.5rem;
+        border-radius: 1rem;
+        background-color: rgb(71, 173, 173);
+        border: 0.1rem solid rgb(0, 0, 0);
+        box-shadow: 0 0px 15px rgba(0, 0, 0, 0.58);
+        color: white;
+        font-weight: bold;
+      }
+      .Applicant {
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .student input,
+      .Reason input {
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      .Details textarea {
+        border: 1px solid black;
+        width: calc(100% - 0.5rem);
+      }
+      .studenDetail{
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Application">
+      <div class="name">
+        <div class="Applicant">
+          <label>Applicant Name - Roll No</label>
+          <div class="studenDetail">
+            <div class="student">
+              <input type="text" />
+              <select class="rollno"></select>
+            </div>
+          </div>
+        </div>
+        <button class="add">Add Member</button>
+      </div>
+      <div class="Reason">
+        <label> Reason</label>
+        <input list="reason" name="reason" />
+        <datalist id="reason">
+          <option value="Leave"></option>
+          <option value="Acadmics"></option>
+          <option value="Complainet"></option>
+        </datalist>
+      </div>
+      <div class="Details"><textarea rows="10"></textarea></div>
+      <button class="Submit">Submit</button>
+    </div>
+    <script>
+      let rollno = document.querySelector(".rollno");
+      let AddMember = document.querySelector(".add");
+      let student = document.querySelector(".studenDetail");
+      AddMember.addEventListener("click", () => {
+        const temp = document.createElement("div");
+        temp.classList.add("student");
+        temp.innerHTML = `<input type="text"><select class="rollno">${createElement()}</select>`;
+        temp.type = "text";
+        student.appendChild(temp);
+      });
+      let createElement = () => {
+        let options = "";
+        for (let i = 0; i < 71; i++) {
+          options = options + `<option value="${i + 1}">${i + 1}</option>\n`;
+        }
+        rollno.innerHTML = options;
+        return options;
+      };
+      createElement();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: azure;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .notice-controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .notice-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        input, select, textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .notice-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #47adad;
+            color: white;
+        }
+
+        .notice-board {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .notice {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: grid;
+            gap: 0.5rem;
+            border-left: 4px solid #47adad;
+        }
+
+        .notice.urgent {
+            border-left-color: #ff4444;
+        }
+
+        .notice.event {
+            border-left-color: #33b5e5;
+        }
+
+        .notice.academic {
+            border-left-color: #00C851;
+        }
+
+        .notice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notice-type {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            background: #f0f0f0;
+        }
+
+        .notice-date {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .notice-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .notice-content {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background: #47adad;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #3a8a8a;
+        }
+
+        .delete-btn {
+            padding: 0.25rem 0.5rem;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .notice-controls {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Notice Board</h1>
+            <p>Stay updated with the latest announcements</p>
+        </div>
+
+        <div class="notice-controls">
+            <form class="notice-form" id="noticeForm">
+                <div class="form-group">
+                    <label for="noticeTitle">Title</label>
+                    <input type="text" id="noticeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="noticeType">Type</label>
+                    <select id="noticeType" required>
+                        <option value="general">General</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="event">Event</option>
+                        <option value="academic">Academic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noticeContent">Content</label>
+                    <textarea id="noticeContent" required></textarea>
+                </div>
+                <button type="submit" class="btn">Post Notice</button>
+            </form>
+        </div>
+
+        <div class="notice-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="general">General</button>
+            <button class="filter-btn" data-filter="urgent">Urgent</button>
+            <button class="filter-btn" data-filter="event">Event</button>
+            <button class="filter-btn" data-filter="academic">Academic</button>
+        </div>
+
+        <div class="notice-board" id="noticeBoard">
+            <!-- Notices will be added here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Store notices in localStorage
+        let notices = JSON.parse(localStorage.getItem('notices')) || [];
+
+        // Function to add a new notice
+        function addNotice(title, type, content) {
+            const notice = {
+                id: Date.now(),
+                title,
+                type,
+                content,
+                date: new Date().toLocaleString(),
+            };
+            notices.unshift(notice); // Add to beginning of array
+            localStorage.setItem('notices', JSON.stringify(notices));
+            displayNotices();
+        }
+
+        // Function to delete a notice
+        function deleteNotice(id) {
+            notices = notices.filter(notice => notice.id !== id);
+            localStorage.setItem('notices', JSON.stringify(notices));
+            displayNotices();
+        }
+
+        // Function to display notices
+        function displayNotices(filter = 'all') {
+            const noticeBoard = document.getElementById('noticeBoard');
+            noticeBoard.innerHTML = '';
+
+            const filteredNotices = filter === 'all' 
+                ? notices 
+                : notices.filter(notice => notice.type === filter);
+
+            filteredNotices.forEach(notice => {
+                const noticeElement = document.createElement('div');
+                noticeElement.className = `notice ${notice.type}`;
+                noticeElement.innerHTML = `
+                    <div class="notice-header">
+                        <span class="notice-type">${notice.type.charAt(0).toUpperCase() + notice.type.slice(1)}</span>
+                        <button class="delete-btn" onclick="deleteNotice(${notice.id})">Delete</button>
+                    </div>
+                    <h3 class="notice-title">${notice.title}</h3>
+                    <p class="notice-content">${notice.content}</p>
+                    <span class="notice-date">${notice.date}</span>
+                `;
+                noticeBoard.appendChild(noticeElement);
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('noticeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('noticeTitle').value;
+            const type = document.getElementById('noticeType').value;
+            const content = document.getElementById('noticeContent').value;
+
+            addNotice(title, type, content);
+            e.target.reset();
+        });
+
+        // Handle filters
+        document.querySelector('.notice-filters').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+
+                // Filter notices
+                const filter = e.target.dataset.filter;
+                displayNotices(filter);
+            }
+        });
+
+        // Initial display
+        displayNotices();
+
+        // Add some sample notices if none exist
+        if (notices.length === 0) {
+            addNotice(
+                'Welcome to the Notice Board',
+                'general',
+                'This is a platform for important announcements and updates. Check back regularly for new notices.'
+            );
+            addNotice(
+                'Upcoming Examinations',
+                'urgent',
+                'Mid-semester examinations will be held from next week. Please check the examination schedule.'
+            );
+            addNotice(
+                'Annual Cultural Fest',
+                'event',
+                'Join us for the annual cultural festival next month. Various events and competitions will be organized.'
+            );
+        }
+    </script>
+</body>
+</html>
